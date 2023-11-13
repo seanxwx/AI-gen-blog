@@ -108,9 +108,12 @@ export default withApiAuthRequired(async function handler(req, res) {
     ],
     });
 
-    const title = titleResponse.data.choices[0]?.message?.content || '';
+    // const title = titleResponse.data.choices[0]?.message?.content || '';
 
-    const metaDescription = metaDescriptionResponse.data.choices[0]?.message?.content || '';
+    // const metaDescription = metaDescriptionResponse.data.choices[0]?.message?.content || '';
+
+    const title = titleResponse.data.choices[0]?.message?.content.replace(/<[^>]+>/g, '') || '';
+    const metaDescription = metaDescriptionResponse.data.choices[0]?.message?.content.replace(/<[^>]+>/g, '') || '';
 
     console.log("post content: ", postContent);
     console.log("title: ", title);
